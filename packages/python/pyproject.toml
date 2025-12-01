@@ -26,6 +26,7 @@ classifiers = [
 ]
 dependencies = [
     "cryptography>=41.0.0",
+    "reedsolo>=1.7.0",
 ]
 
 [project.optional-dependencies]
