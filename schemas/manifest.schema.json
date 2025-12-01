@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Nebula Reconstruction Manifest",
+  "description": "Describes shards, hashing, and reconstruction parameters for escrow/zero-lock-in recovery.",
+  "type": "object",
+  "required": ["version", "original_size_bytes", "rs", "shards", "hash_algorithm"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": ["nebula_reconstruct_v1"]
+    },
+    "hash_algorithm": {
+      "type": "string",
+      "enum": ["sha256"]
+    },
+    "original_size_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rs": {
+      "type": "object",
+      "required": ["data_shards", "parity_shards", "total_shards"],
+      "properties": {
+        "data_shards": { "type": "integer", "minimum": 1 },
+        "parity_shards": { "type": "integer", "minimum": 0 },
+        "total_shards": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "encryption": {
+      "type": "object",
+      "required": ["algorithm", "iv"],
+      "properties": {
+        "algorithm": { "type": "string", "enum": ["aes-256-gcm"] },
+        "iv": { "type": "string" },
+        "tag": { "type": "string" },
+        "key_hint": { "type": "string" }
+      }
+    },
+    "shards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["index", "hash", "size_bytes"],
+        "properties": {
+          "index": { "type": "integer", "minimum": 0 },
+          "hash": { "type": "string" },
+          "size_bytes": { "type": "integer", "minimum": 0 },
+          "url": { "type": "string" },
+          "path": { "type": "string" }
+        }
+      }
+    },
+    "merkle": {
+      "type": "object",
+      "properties": {
+        "root": { "type": "string" },
+        "algorithm": { "type": "string", "enum": ["sha256"] },
+        "leaf_hashes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

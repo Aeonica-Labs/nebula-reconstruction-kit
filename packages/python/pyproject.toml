@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nebula-reconstruction-kit"
+version = "0.1.0"
+description = "Reference toolkit for verifying and reconstructing shards from a Nebula manifest"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.9"
+authors = [
+    { name = "Aeonica Labs", email = "security@nebulaguard.net" }
+]
+keywords = ["reconstruction", "erasure-coding", "merkle", "aes-gcm", "nebula"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Security :: Cryptography"
+]
+dependencies = [
+    "cryptography>=41.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "mypy", "ruff"]
+
+[project.scripts]
+nebula-reconstruct = "nebula_reconstruct.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["nebula_reconstruct"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

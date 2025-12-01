@@ -1,0 +1,42 @@
+{
+  "version": "nebula_reconstruct_v1",
+  "hash_algorithm": "sha256",
+  "original_size_bytes": 39,
+  "rs": {
+    "data_shards": 3,
+    "parity_shards": 0,
+    "total_shards": 3
+  },
+  "shards": [
+    {
+      "index": 0,
+      "hash": "59e7aeb79e35c25ffe4f184f031b3cfef936eae9995525fb1e9ca6548ef94490",
+      "size_bytes": 13,
+      "path": "shards/shard-0.bin"
+    },
+    {
+      "index": 1,
+      "hash": "d5fb6d650d6615775a15b7da6a90604e6fef458f04fb0ff0593a6fb5ca5bf1cd",
+      "size_bytes": 13,
+      "path": "shards/shard-1.bin"
+    },
+    {
+      "index": 2,
+      "hash": "4b4c40d4bb48b8b54fb7f8b91ce4b1e38ddecfb9c24f4fa88da77f99c6e0665c",
+      "size_bytes": 13,
+      "path": "shards/shard-2.bin"
+    }
+  ],
+  "merkle": {
+    "algorithm": "sha256",
+    "leaf_hashes": [
+      "59e7aeb79e35c25ffe4f184f031b3cfef936eae9995525fb1e9ca6548ef94490",
+      "d5fb6d650d6615775a15b7da6a90604e6fef458f04fb0ff0593a6fb5ca5bf1cd",
+      "4b4c40d4bb48b8b54fb7f8b91ce4b1e38ddecfb9c24f4fa88da77f99c6e0665c"
+    ],
+    "root": "35f7fd1973bd8eda9e8a4dcf89f879bfaa63f25f154858b4d54dd41634540d4b"
+  },
+  "metadata": {
+    "note": "Demo manifest with plain shards (no encryption) for reconstruction kit smoke test."
+  }
+}
